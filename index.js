@@ -81,11 +81,11 @@ function gs() {
 
             console.log('gs command: ' + this.options.concat([this._input]));
 
-            if (this.excPath.length > 0 && !this.excPath.endsWith('/')) {
-                this.excPath += '/';
-            }
-
-            var proc = spawn(this.excPath + 'gs', this.options.concat([this._input]));
+            if (this.excPath) {
+                var proc = spawn(this.excPath, this.options.concat([this._input]));
+            } else {
+                var proc = spawn('gs', this.options.concat([this._input]));
+            }            
 
             proc.stdin.on('error', cb);
             proc.stdout.on('error', cb);
