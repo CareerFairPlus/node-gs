@@ -11,6 +11,7 @@ function gs() {
         },
         "executablePath": function (path) {
             this.excPath = path;
+            return this;
         },
         "batch":          function () {
             this.options.push('-dBATCH');
